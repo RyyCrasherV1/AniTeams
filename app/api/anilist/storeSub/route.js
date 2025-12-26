@@ -1,17 +1,13 @@
-
 let data;
-
 try {
-  const raw = await getDataSomehow(); // misal fetch atau readFile
-  if (!raw) {
+  const raw = someVariable; // data asli, bisa dari fetch atau file
+  if (!raw || raw === "") {
     console.error("Data kosong atau undefined");
-    data = {}; // default object supaya build tidak gagal
+    data = {}; // fallback supaya build tidak gagal
   } else {
     data = JSON.parse(raw);
   }
 } catch (err) {
   console.error("JSON parse error:", err);
-  data = {}; // fallback agar build tidak gagal
+  data = {}; // fallback
 }
-
-return new Response(JSON.stringify(data), { status: 200 });
